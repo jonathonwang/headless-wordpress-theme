@@ -1,0 +1,27 @@
+{
+  "name": "Wordpress Playground",
+  "icon": "",
+  "production": false,
+
+  "paths": {
+    "vendor": {
+      "bootstrap": {
+        "sass": "./node_modules/bootstrap-sass/assets/stylesheets",
+        "js": "./node_modules/bootstrap-sass/assets/javascripts"
+      },
+      "fontawesome": {
+        "sass": "./node_modules/font-awesome/scss",
+        "fonts": "./node_modules/font-awesome/fonts"
+      }
+    },
+    "src" : {
+      "js"  : "./src/js",
+      "sass": "./src/sass"
+    },
+    "dist": {
+      "js"  : "./dist/js",
+      "css" : "./dist/css",
+      "html": "./html/**/*.html"
+    }
+  }
+}
