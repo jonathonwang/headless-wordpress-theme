@@ -1,9 +1,24 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 well" v-for="post in posts">
+        <a v-link="{ path: `post/${post.id}` }">
+          <h2>
+            {{ post.title.rendered }}
+          </h2>
+        </a>
+        {{{ post.content.rendered }}}
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import Vue from 'vue';
+
 export default {
   data() {
     return {
-      message: 'hello world',
       posts: [],
-      headerMenu: [],
     };
   },
   methods: {
@@ -13,15 +28,9 @@ export default {
         (request) => { console.log(request); }
       );
     },
-    getNavMenu() {
-      Vue.http.get(`${window.app.env.url}/wp-json/wp-api-menus/v2/menu-locations/header-menu`).then(
-        (request) => { this.headerMenu = request.data; },
-        (request) => { console.log(request); }
-      );
-    },
   },
   ready() {
     this.getPostData();
-    this.getNavMenu();
   },
 };
+</script>

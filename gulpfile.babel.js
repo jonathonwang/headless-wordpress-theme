@@ -20,7 +20,7 @@ gulp.Sass('sass', `${config.paths.src.sass}/**/*.scss`, config.paths.dist.css);
 gulp.Browserify('browserify', `${config.paths.src.js}/scripts.js`, `${config.paths.dist.js}/main.js`);
 
 // Lint ES6
-gulp.Eslint('eslint', `${config.paths.src.js}/**/*.js`, './.eslintrc');
+gulp.Eslint('eslint', `${config.paths.src.js}/**/*.{js,vue}`, './.eslintrc');
 
 // Lint Scss
 gulp.Scsslint('scsslint', `${config.paths.src.sass}/**/*.scss`, `${config.paths.src.sass}/vendor/**/*.scss`, '.scss-lint.yml');
@@ -33,6 +33,6 @@ gulp.Default(['copy', 'sass', 'scsslint', 'eslint', 'browserify']);
 
 // Watch Task
 gulp.Watch([], [
-  { path: `${config.paths.src.js}/**/*.js`, tasks: ['eslint','browserify'] },
+  { path: `${config.paths.src.js}/**/*.{js,vue}`, tasks: ['eslint','browserify'] },
   { path: `${config.paths.src.sass}/**/*.scss`, tasks: ['scsslint','sass'] }
 ]);

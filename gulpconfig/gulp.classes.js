@@ -3,7 +3,8 @@
  */
 import del          from 'del';
 import gulp         from 'gulp';
-import tsify        from "tsify";
+import tsify        from 'tsify';
+import vueify       from 'vueify';
 import watchify     from 'watchify';
 import sass         from 'gulp-sass';
 import size         from 'gulp-size';
@@ -93,11 +94,12 @@ export const Sass = (taskName, src, dest) => {
  * @param dist    : string
  * @param plugins : Array<string> | string
  */
-export const Browserify = (taskName, src, dest) => {
+export const Browserify = (taskName, src, dest, plugins) => {
   gulp.task(taskName, () => {
     const bundler = browserify({ debug: true, entries: src });
     bundler.plugin(tslint);
-    bundler.transform("babelify");
+    bundler.transform('babelify');
+    bundler.transform('vueify');
     bundler.bundle()
     .on('error', gutil.log)
     .pipe(source(dest))
